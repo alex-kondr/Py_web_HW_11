@@ -11,6 +11,8 @@ packages = [{include = "py_web_hw_11"}]
 python = "^3.10"
 fastapi = "^0.94.1"
 uvicorn = {extras = ["standart"], version = "^0.21.0"}
+sqlalchemy = "^2.0.6"
+psycopg2 = "^2.9.5"
 
 
 [build-system]
