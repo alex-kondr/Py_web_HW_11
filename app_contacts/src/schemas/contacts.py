@@ -7,6 +7,7 @@ from pydantic import BaseModel, Field, EmailStr, constr
 class ContactBase(BaseModel):
     first_name: str = Field(min_length=3, max_length=50)
     last_name: str = Field(min_length=3, max_length=50)
+    email: Optional[EmailStr]    
     phone: Optional[
         constr(
             strip_whitespace=True,
@@ -16,11 +17,18 @@ class ContactBase(BaseModel):
       
         
 class ContactModel(ContactBase):
-    email: Optional[EmailStr]
     birthday: Optional[date]
     
+    
+class ContactUpdate(ContactModel):
+    pass
 
-class ContactResponse(ContactBase):
+
+class ContactEmailUpdate(BaseModel):
+    email: Optional[EmailStr]
+    
+
+class ContactResponse(ContactModel):
     id: int
     create_at: datetime
     
