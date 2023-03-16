@@ -11,7 +11,7 @@ class ContactBase(BaseModel):
     phone: Optional[
         constr(
             strip_whitespace=True,
-            regex=r"^(\+)[1-9][0-9\-\(\)\.]{9,18}$",
+            regex=r"^(\+)[1-9][0-9\-\(\)\.]{9,16}$",
         )
     ]
       

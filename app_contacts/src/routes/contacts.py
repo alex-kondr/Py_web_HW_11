@@ -45,7 +45,7 @@ async def read_contact(contact_id: int, db: Session = Depends(get_db)):
     return contact
 
 
-@router.post("/", response_model=ContactResponse)
+@router.post("/", response_model=ContactResponse, status_code=status.HTTP_201_CREATED)
 async def create_contact(body: ContactModel, db: Session = Depends(get_db)):
     return await repository_contacts.create_contact(body, db)
 
@@ -66,7 +66,7 @@ async def update_email_contact(body: ContactEmailUpdate, contact_id: int, db: Se
     return contact
 
 
-@router.delete("/{contact_id}", response_model=ContactResponse)
+@router.delete("/{contact_id}", response_model=ContactResponse, status_code=status.HTTP_202_ACCEPTED)
 async def remove_contact(contact_id: int, db: Session = Depends(get_db)):
     contact = await repository_contacts.remove_contact(contact_id, db)
     if contact is None:
